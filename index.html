@@ -5,6 +5,7 @@
 </head>
  <body>
     <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
       <canvas id="mycanvas"></canvas> 
     </p>
  </body>
@@ -33,7 +34,6 @@ var evaluate=function(expression){
     answer=answer.replace(/÷/g,"/");//replace division signs
     answer=answer.replace(/×/g,"*");//replace multiplication signs
     answer=answer.replace(/[^0-9.\/\*\-+e]/g,"");//remove everything not on calculator
-    println(answer);
     return eval(answer);
 };
 var updateInput = function(buttonPressed){
@@ -61,22 +61,16 @@ var button=function(x, y, w, h, txt){
             updateInput(buttons[floor(mouseY/Height)-1][floor(mouseX/Width)]);
             //clicked button index y and x, rounded with floor() 
         }
-        /*if(mouseX>=x&&mouseY>=y && mouseX<=x+Width&&mouseY<=y+Height){
-        input += " " + txt;
-        println(input);
-        }*/
     };
     keyPressed=function(){
-		println("keyCode="+keyCode+"\tkey="+key);
+		//println("keyCode="+keyCode+"\tkey="+key); for testing purposes
 		var str=String.fromCharCode(key);
 		if(keyCode===187||keyCode===10){//if clicked equals or enter
 			updateInput("=");
 			
 		}
 		if(Number(keyCode)===8){//if clicked (ctrl+) backspace
-			println("asdadasa");
 			updateInput("delete");
-			//return false; //cancel default
 			
 		}
 		str=str.replace(/\//g,"÷");
